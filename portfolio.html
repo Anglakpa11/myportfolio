@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ang Lakpa Sherpa - UI/UX Designer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #fe0950;
+      --dark-bg: #121212;
+      --card-bg: #1f1f1f;
+      --section-bg: #222;
+      --text-light: #ccc;
+      --text-dark: #aaa;
+      --sidebar-width: 280px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark-bg);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      height: 100vh;
+      width: var(--sidebar-width);
+      background-color: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .profile img {
+      width: 170px;
+      border-radius: 50%;
+      border: 4px solid #444;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      width: 100%;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: var(--text-light);
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li:hover,
+    nav ul li.active {
+      color: var(--primary-color);
+      background: rgba(254, 9, 80, 0.1);
+    }
+
+    nav ul li i {
+      width: 18px;
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    .socials {
+      margin-top: auto;
+      text-align: center;
+      width: 100%;
+    }
+
+    .socials p {
+      text-align: left;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .socials hr {
+      margin: 20px 0;
+      width: 100%;
+      border-color: #444;
+    }
+
+    .media {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .media li {
+      list-style: none;
+    }
+
+    .media a {
+      color: var(--text-light);
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .media a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 40px;
+      background-color: #282828;
+      min-height: 100vh;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-dark);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: 5%;
+    }
+
+    .hero h4 {
+      font-size: 25px;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: var(--primary-color);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-dark);
+      margin-top: 20px;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    .btn:hover {
+      background-color: #c00a42;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(254, 9, 80, 0.3);
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: var(--section-bg);
+      padding: 30px;
+      border-radius: 15px;
+      border-bottom: 3px solid var(--primary-color);
+      border-right: 3px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .card .number {
+      color: var(--primary-color);
+      font-size: 20px;
+      margin-right: 5px;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .portfolio-item {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-item:hover .portfolio-info {
+      transform: translateY(0);
+    }
+
+    /* Education & Experience */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .experience-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+      align-items: center;
+    }
+
+    .experience-img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .pricing-card {
+      background-color: var(--section-bg);
+      padding: 30px;
+      border-radius: 15px;
+      border-bottom: 3px solid var(--primary-color);
+      border-right: 3px solid var(--primary-color);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.mid {
+      transform: scale(1.05);
+      background-color: #2a2a2a;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .pricing-card.mid:hover {
+      transform: translateY(-10px) scale(1.05);
+    }
+
+    .price {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    /* Contact */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background-color: #222;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(254, 9, 80, 0.2);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #121212;
+      padding: 60px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-info i {
+      margin-right: 15px;
+      color: var(--primary-color);
+      font-size: 20px;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-dark);
+      padding-top: 20px;
+      border-top: 1px solid #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 70px;
+        padding: 15px 5px;
+      }
+
+      .profile img {
+        width: 50px;
+        border-width: 2px;
+      }
+
+      nav ul li span {
+        display: none;
+      }
+
+      nav ul li i {
+        margin-right: 0;
+        font-size: 20px;
+      }
+
+      .socials p,
+      .socials hr {
+        display: none;
+      }
+
+      .media {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .main-content {
+        margin-left: 70px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero h2 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .profile img {
+        width: 70px;
+        margin-bottom: 0;
+      }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav ul li {
+        padding: 10px;
+      }
+
+      .socials {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .experience-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-img {
+        max-width: 100%;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .pricing-card.mid {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img
+          src="https://scontent.fktm3-1.fna.fbcdn.net/v/t39.30808-6/474378960_8998638920243093_8230676208109053508_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=s5UAD0K0nXcQ7kNvwG_jFQB&_nc_oc=Adm_iW5S1p9HE9F1zroIx-W1c4N_6jhmTsl4Ui38VC2S1a2CHT7x4T7x5i721yyISsTMAR8q7oY7QwAiJa_jgzuz&_nc_zt=23&_nc_ht=scontent.fktm3-1.fna&_nc_gid=S4sHX9PeddqthC9f0qOY5A&oh=00_AfJGhLAj6SZaOVPyKYskQfcfHiU1e3pI_TRuGttR40Df-A&oe=68432153"
+          alt="Ang Lakpa Sherpa">
+      </div>
+
+      <nav>
+        <ul>
+          <li class="active"><i class="fas fa-home"></i> <span>Home</span></li>
+          <li><i class="fas fa-briefcase"></i> <span>Features</span></li>
+          <li><i class="fas fa-layer-group"></i> <span>Portfolio</span></li>
+          <li><i class="fas fa-file-alt"></i> <span>Resume</span></li>
+          <li><i class="fas fa-users"></i> <span>Clients</span></li>
+          <li><i class="fas fa-tags"></i> <span>Pricing</span></li>
+          <li><i class="fas fa-blog"></i> <span>Blog</span></li>
+          <li><i class="fas fa-phone"></i> <span>Contact</span></li>
+        </ul>
+      </nav>
+
+      <div class="socials">
+        <hr>
+        <p>Find With Me</p>
+        <ul class="media">
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h4>HELLO</h4>
+        <h1>I'm Ang Lakpa Sherpa</h1>
+        <h2>A <span>UI/UX designer</span></h2>
+        <p>
+          A personal portfolio is a collection of your work, achievements, and skills that highlights your abilities and
+          professional growth. It serves as a visual representation of your journey and expertise.
+        </p>
+        <button class="btn">View Portfolio <i class="fas fa-arrow-right"></i></button>
+      </section>
+
+      <!-- Features Section -->
+      <section class="section">
+        <div class="features-grid">
+          <div class="card">
+            <h2><span class="number">01.</span>Success Architects</h2>
+            <p>Gained an understanding of how design supports business goals. Practiced creating clean and functional layouts for consulting and service-based websites.</p>
+          </div>
+          <div class="card">
+            <h2><span class="number">02.</span>UI/Visual Design</h2>
+            <p>Building Interface Design Skills
+Created simple, clean UI designs for web and mobile screens using Figma. Focused on colors, fonts, spacing, and consistency to build strong visual foundations.</p>
+          </div>
+          <div class="card">
+            <h2><span class="number">03.</span>User Experience</h2>
+            <p>Learned to create wireframes and basic user flows. Studied how users interact with digital products and practiced making designs more intuitive and easy to use.</p>
+          </div>
+          <div class="card">
+            <h2><span class="number">04.</span>Creative Solutions</h2>
+            <p>Exploring Design Thinking
+Practiced solving design problems creatively through personal projects and challenges. Used feedback and iteration to improve my work step by step.</p>
+          </div>
+          <div class="card">
+            <h2><span class="number">05.</span>Innovative Design</h2>
+            <p>Experimenting with New Ideas
+Explored modern design styles and trends. Tried out components like dark mode, neumorphism, and card-based layouts in beginner UI design projects.</p>
+          </div>
+          <div class="card">
+            <h2><span class="number">06.</span>Stragetic Development</h2>
+            <p>Started understanding the importance of structure and hierarchy in design. Practiced organizing content and layouts to guide users through a product smoothly.
+
+</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-label">LATEST PORTFOLIO</div>
+          <h3 class="section-title">Transforming Ideas into Exceptional</h3>
+          <p class="section-subtitle">Business consulting consultants provide expert advice and guide businesses to help
+            them improve their performance, efficiency, and organizational</p>
+        </div>
+
+        <div class="portfolio-grid">
+         
+
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="UI Design Project">
+            <div class="portfolio-info">
+              <h3>UI Design System</h3>
+              <p>Design & Development</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="Mobile App Project">
+            <div class="portfolio-info">
+              <h3>Mobile Banking App</h3>
+              <p>UX Research & Design</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="E-commerce Project">
+            <div class="portfolio-info">
+              <h3>E-commerce Platform</h3>
+              <p>UI/UX Design</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-label">EDUCATION & EXPERIENCE</div>
+          <h3 class="section-title">Empowering Creativity through</h3>
+          <p class="section-subtitle">Business consulting consultants provide expert advice and guide businesses to help
+            them improve their performance, efficiency, and organizational</p>
+        </div>
+
+        <h4>Education</h4>
+        <div class="education-grid">
+          <div class="card">
+            <h2>Secondary Education Examination (SEE)</h2>
+            <p>East-Pole Higher Secondary School, Nepal (2018)<br>
+              Affiliated to National Examination Board (NEB)</p>
+          </div>
+
+          <div class="card">
+            <h2>Higher Secondary Education</h2>
+            <p>Trinity International College, Nepal<br>
+              Affiliated to National Examination Board (NEB)</p>
+          </div>
+
+          <div class="card">
+            <h2>Bachelor’s Degree (Ongoing)</h2>
+            <p>Thames International College, Nepal<br>
+              Affiliated to Tribhuvan University (TU)<br>
+              Bachelor of Information Management (BIM)</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top: 40px;">Experience</h4>
+        <div class="experience-container">
+          <div>
+            <div class="card" style="margin-bottom: 30px;">
+              <div class="section-label">2025-present</div>
+              <h2>Soft Tech</h2>
+              <h3>UI/UX Designer</h3>
+              <p>Designed and prototyped responsive user interfaces using tools like Figma.
+
+                Focused on user-centered design principles to improve user experience.
+
+                Created design systems and style guides for consistency across platforms.
+
+                Worked on wireframes, mockups, and user flows for personal or client projects.
+
+                Conducted basic user testing and incorporated feedback into design iterations.</p>
+            </div>
+
+            <div class="card">
+              <div class="section-label">2024-Present</div>
+              <h2>UI/UX Design Bootcamp </h2>
+              <h3>Trainee UI/UX Designer</h3>
+              <p>Completed hands-on projects as part of structured learning (e.g., mobile app interfaces, landing pages,
+                dashboards).
+
+                Gained foundational skills in visual hierarchy, color theory, typography, and accessibility.
+
+                Learned to use industry-standard tools such as Figma, Sketch, and Canva.
+
+                Developed wireframes and prototypes while learning design thinking methods.</p>
+            </div>
+          </div>
+
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1640&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Work Experience" class="experience-img">
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section
+      <section class="section">
+        <div class="section-header">
+          <div class="section-label">MY PRICE PLAN</div>
+          <h3 class="section-title">Enhancing Collaboration between Remote</h3>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">$ 5.00</div>
+            <p>Per Month</p>
+            <hr>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> 5 Social Media Accounts</li>
+              <li><i class="fas fa-check"></i> Free Platform Access</li>
+              <li><i class="fas fa-check"></i> 24/7 Customer Support</li>
+              <li><i class="fas fa-times"></i> Marketing Platform</li>
+              <li><i class="fas fa-times"></i> Lifetime Support</li>
+            </ul>
+            <button class="btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card mid">
+            <h3>Professional</h3>
+            <div class="price">$ 230.00</div>
+            <p>Per Month</p>
+            <hr>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> 10 Social Media Accounts</li>
+              <li><i class="fas fa-check"></i> Premium Platform Access</li>
+              <li><i class="fas fa-check"></i> Priority Support</li>
+              <li><i class="fas fa-check"></i> Marketing Platform</li>
+              <li><i class="fas fa-check"></i> Lifetime Updates</li>
+            </ul>
+            <button class="btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Enterprise</h3>
+            <div class="price">$ 450.00</div>
+            <p>Per Month</p>
+            <hr>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Unlimited Accounts</li>
+              <li><i class="fas fa-check"></i> Full Platform Access</li>
+              <li><i class="fas fa-check"></i> Dedicated Support</li>
+              <li><i class="fas fa-check"></i> Advanced Marketing</li>
+              <li><i class="fas fa-check"></i> Lifetime Support</li>
+            </ul>
+            <button class="btn">Get Started</button>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Contact Section -->
+      <section class="section">
+        <div class="contact-container">
+          <div>
+            <div class="section-label">GET IN TOUCH</div>
+            <h3 class="section-title">Elevate your brand with Me</h3>
+            <p class="section-subtitle" style="text-align: left; margin: 20px 0;">
+              I'm ready to bring your ideas to life. Whether you have a project in mind or just want to chat about
+              design possibilities, feel free to reach out. I'll get back to you as soon as possible!
+            </p>
+
+            
+
+            
+
+            
+          </div>
+
+          <div>
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <input type="tel" placeholder="Phone" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" placeholder="Subject" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <textarea placeholder="Your Message" required></textarea>
+              </div>
+
+              <button class="btn" style="width: 100%;">Appointment Now <i class="fas fa-arrow-right"></i></button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h4>Ang Lakpa Sherpa</h4>
+            <p>UI/UX Designer passionate about creating meaningful and engaging digital experiences that solve real
+              problems.</p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#">About Me</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="#">UI/UX Design</a></li>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">App Design</a></li>
+              <li><a href="#">Brand Identity</a></li>
+              
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <div class="contact-info">
+              <i class="fas fa-phone"></i>
+              <span>+977 9849208602</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-envelope"></i>
+              <span>anglakpa11@gmail.com</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kathmandu, Nepal</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+
+</html>
