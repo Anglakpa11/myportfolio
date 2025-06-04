@@ -515,6 +515,12 @@
       }
     }
 
+    a {
+  text-decoration: none;
+   color: inherit;
+}
+
+
     @media (max-width: 768px) {
       .sidebar {
         width: 100%;
@@ -594,14 +600,16 @@
 
       <nav>
         <ul>
-          <li class="active"><i class="fas fa-home"></i> <span>Home</span></li>
-          <li><i class="fas fa-briefcase"></i> <span>Features</span></li>
-          <li><i class="fas fa-layer-group"></i> <span>Portfolio</span></li>
-          <li><i class="fas fa-file-alt"></i> <span>Resume</span></li>
-          <li><i class="fas fa-users"></i> <span>Clients</span></li>
-          <li><i class="fas fa-tags"></i> <span>Pricing</span></li>
-          <li><i class="fas fa-blog"></i> <span>Blog</span></li>
-          <li><i class="fas fa-phone"></i> <span>Contact</span></li>
+          <li class="active"><a href="#home"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a href="#Features"><i class="fas fa-briefcase"></i> <span>Features</span></a></li>
+
+
+          <li><a href="#Portfolio"><i class="fas fa-layer-group"></i> <span>Portfolio</span></a></li>
+          <!-- <li><a href="#Resume"><i class="fas fa-file-alt"></i> <span>Resume</span></a></li> -->
+          <!-- <li><a href="#Clients"><i class="fas fa-users"></i> <span>Clients</span></a></li> -->
+          <!-- <li><a href="#Pricing"><i class="fas fa-users"></i> <span>Pricing</span></a></li> -->
+          <!-- <li><a href="#Blog"><i class="fas fa-blog"></i> <span>Blog</span></a></li> -->
+          <li><a href="#Contact"><i class="fas fa-phone"></i> <span>Contact</span></a></li>
         </ul>
       </nav>
 
@@ -609,10 +617,11 @@
         <hr>
         <p>Find With Me</p>
         <ul class="media">
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="https://www.instagram.com/ang_graphite/"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/ang-lakpa-sherpa-4a50202b3/"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="https://www.facebook.com/AanglakpaS"><i class="fab fa-facebook-f"></i></a></li>
+          
+
         </ul>
       </div>
     </aside>
@@ -620,7 +629,7 @@
     <!-- Main Content -->
     <main class="main-content">
       <!-- Hero Section -->
-      <section class="hero">
+      <section id="home" class="hero">
         <h4>HELLO</h4>
         <h1>I'm Ang Lakpa Sherpa</h1>
         <h2>A <span>UI/UX designer</span></h2>
@@ -632,7 +641,7 @@
       </section>
 
       <!-- Features Section -->
-      <section class="section">
+      <section id="Features" class="section">
         <div class="features-grid">
           <div class="card">
             <h2><span class="number">01.</span>Success Architects</h2>
@@ -667,7 +676,7 @@ Explored modern design styles and trends. Tried out components like dark mode, n
       </section>
 
       <!-- Portfolio Section -->
-      <section class="section">
+      <section id="Portfolio" class="section">
         <div class="section-header">
           <div class="section-label">LATEST PORTFOLIO</div>
           <h3 class="section-title">Transforming Ideas into Exceptional</h3>
@@ -711,7 +720,7 @@ Explored modern design styles and trends. Tried out components like dark mode, n
       </section>
 
       <!-- Education Section -->
-      <section class="section">
+      <section id="Education" class="section">
         <div class="section-header">
           <div class="section-label">EDUCATION & EXPERIENCE</div>
           <h3 class="section-title">Empowering Creativity through</h3>
@@ -783,7 +792,7 @@ Explored modern design styles and trends. Tried out components like dark mode, n
       </section>
 
       <!-- Pricing Section
-      <section class="section">
+      <section  id="Pricing"class="section">
         <div class="section-header">
           <div class="section-label">MY PRICE PLAN</div>
           <h3 class="section-title">Enhancing Collaboration between Remote</h3>
@@ -838,7 +847,7 @@ Explored modern design styles and trends. Tried out components like dark mode, n
       </section> -->
 
       <!-- Contact Section -->
-      <section class="section">
+      <section id="Contact" class="section">
         <div class="contact-container">
           <div>
             <div class="section-label">GET IN TOUCH</div>
@@ -866,9 +875,9 @@ Explored modern design styles and trends. Tried out components like dark mode, n
                 </div>
               </div>
 
-              <div class="form-row">
+                          <div class="form-row">
                 <div class="form-group">
-                  <input type="email" placeholder="Your Email" required>
+                  <input type="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                   <input type="text" placeholder="Subject" required>
@@ -879,11 +888,14 @@ Explored modern design styles and trends. Tried out components like dark mode, n
                 <textarea placeholder="Your Message" required></textarea>
               </div>
 
-              <button class="btn" style="width: 100%;">Appointment Now <i class="fas fa-arrow-right"></i></button>
+              <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
             </form>
           </div>
         </div>
       </section>
+    </main>
+
+
 
       <!-- Footer -->
       <footer class="footer">
